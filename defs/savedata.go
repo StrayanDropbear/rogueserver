@@ -33,6 +33,8 @@ type SystemSaveData struct {
 	VoucherUnlocks     VoucherUnlocks     `json:"voucherUnlocks"`
 	VoucherCounts      VoucherCounts      `json:"voucherCounts"`
 	Eggs               []EggData          `json:"eggs"`
+	EggPity            []int              `json:"eggPity"`
+	UnlockPity         []int              `json:"unlockPity"`
 	GameVersion        string             `json:"gameVersion"`
 	Timestamp          int                `json:"timestamp"`
 }
@@ -77,10 +79,17 @@ type VoucherUnlocks map[string]int
 type VoucherCounts map[string]int
 
 type EggData struct {
-	Id         int       `json:"id"`
-	GachaType  GachaType `json:"gachaType"`
-	HatchWaves int       `json:"hatchWaves"`
-	Timestamp  int       `json:"timestamp"`
+	Id                    int       `json:"id"`
+	GachaType             GachaType `json:"gachaType"`
+	HatchWaves            int       `json:"hatchWaves"`
+	Timestamp             int       `json:"timestamp"`
+	Tier                  int       `json:"tier"`
+	SourceType            int       `json:"sourceType"`
+	VariantTier           int       `json:"variantTier"`
+	IsShiny               bool      `json:"isShiny"`
+	Species               int       `json:"species"`
+	EggMoveIndex          int       `json:"eggMoveIndex"`
+	OverrideHiddenAbility bool      `json:"overrideHiddenAbility"`
 }
 
 type GachaType int
@@ -105,6 +114,13 @@ type SessionSaveData struct {
 	Trainer        TrainerData              `json:"trainer"`
 	GameVersion    string                   `json:"gameVersion"`
 	Timestamp      int                      `json:"timestamp"`
+	Challenges     []ChallengeData          `json:"challenges"`
+}
+
+type ChallengeData struct {
+	Id       int `json:"id"`
+	Value    int `json:"value"`
+	Severity int `json:"severity"`
 }
 
 type GameMode int
